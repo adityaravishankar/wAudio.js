@@ -1,0 +1,40 @@
+{
+    "env": {
+        "browser": true
+    },
+    "globals": {
+        "Uint8Array": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "no-const-assign": "warn",
+        "no-this-before-super": "warn",
+        "no-undef": "warn",
+        "no-unreachable": "warn",
+        "no-unused-vars": "warn",
+        "constructor-super": "warn",
+        "valid-typeof": "warn",
+        "no-console": "off",
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "quotes": ["error", "double"],
+        "semi": ["error","always"],
+        "no-multi-spaces": "error",
+        "no-trailing-spaces": "error",
+        "space-infix-ops": "error",
+        "space-unary-ops": "error",
+        "func-call-spacing": ["error", "never"],
+        "array-bracket-spacing": ["error", "never"],
+        "block-spacing": "error",
+        "brace-style": "error",
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "key-spacing": "error",
+        "newline-after-var": ["error", "always"],
+        "newline-before-return": "error",
+        "no-multiple-empty-lines": "error",
+        "no-tabs": "error",
+        "space-before-blocks": "error",
+        "object-curly-spacing": ["error", "always"],
+        "eqeqeq": "error",
+        "curly": "error"
+    }
+}

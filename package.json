@@ -1,0 +1,31 @@
+{
+  "name": "waudio",
+  "version": "1.0.0",
+  "description": "Javascript Web Audio drop-in replacement for Audio",
+  "main": "dist/wAudio.js",
+  "scripts": {
+    "build": "COPYRIGHT='(c) 2017, Aditya Ravi Shankar (www.adityaravishankar.com)' && VERSION=`printf 'v' n&& node -e 'console.log(require(\"./package.json\").version)'` && uglifyjs --preamble \"/* wAudio.js $VERSION | $COPYRIGHT | MIT License */\" src/wAudio.js -c -m --screw-ie8 -o dist/wAudio.min.js && echo \"/*\n * wAudio.js $VERSION\n * https://github.com/adityaravishankar/wAudio.js\n *\n * $COPYRIGHT\n *\n * MIT License\n *\n */\n\" > dist/wAudio.js && cat src/wAudio.js >> dist/wAudio.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityaravishankar/wAudio.js.git"
+  },
+  "keywords": [
+    "wAudio",
+    "wAudio.js",
+    "web",
+    "audio",
+    "webaudio",
+    "html5",
+    "audio"
+  ],
+  "author": "Aditya Ravi Shankar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adityaravishankar/wAudio.js/issues"
+  },
+  "homepage": "https://github.com/adityaravishankar/wAudio.js#readme",
+  "devDependencies": {
+    "uglifyjs": "^2.4.10"
+  }
+}
