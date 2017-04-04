@@ -1,5 +1,5 @@
 # wAudio.js
-[wAudio.js](https://github.com/adityaravishankar/wAudio.js) is a drop-in replacment for the HTML5 Audio object.
+[wAudio.js](https://github.com/adityaravishankar/wAudio.js) is a drop-in replacement for the HTML5 Audio object that uses Web Audio behind the scenes.
 
 It replicates the HTML5 Audio API, but transparently uses the [Web Audio API](http://webaudio.github.io/web-audio-api/) behind the scenes, allowing the use of Web Audio with the simpler Audio API. This makes it easy to migrate your HTML5 projects that use Audio to Web Audio, for use on mobile devices.
 
