@@ -16,7 +16,8 @@
         /* Emulate Event Handlers */
         this._listeners = {
             "canplay": [],
-            "canplaythrough": []
+            "canplaythrough": [],
+            "ended": []
         };
 
         this.init(srcString);
@@ -238,6 +239,18 @@
             }
         },
 
+        _loop: false,
+
+        get loop() {
+            return this._loop;
+        },
+
+        set loop(value) {
+            if (typeof value === "boolean") {
+                this._loop = value;
+            }
+        },
+
         _volume: 1,
 
         get volume() {
@@ -270,7 +283,7 @@
                 this._playTime = audioContext.currentTime;
                 this._bufferSource.start(0, this._currentTime); // When, Offset, Duration
 
-                this._bufferSource.onended = this._reset.bind(this);
+                this._bufferSource.onended = this._ended.bind(this);
             } else if (this._src) { // Source has been set, just not loaded yet. Auto play it
                 this.autoplay = true;
             }
@@ -278,6 +291,7 @@
 
         pause: function() {
             if (this._bufferSource) {
+                this._bufferSource.onended = undefined;
                 this._bufferSource.stop(0);
                 this._currentTime += audioContext.currentTime - this._playTime;
                 this._reset();
@@ -286,12 +300,27 @@
 
         stop: function() {
             if (this._bufferSource) {
+                this._bufferSource.onended = undefined;
                 this._bufferSource.stop(0);
-                this.reset();
+                this._reset();
                 this._currentTime = 0;
+            } else {
+                throw ("could not stop for some reason");
             }
         },
 
+        _ended: function() {
+            this._reset();
+            this._currentTime = 0;            
+            if (this._loop) {
+                this.play();
+            } else {
+                this.dispatchEvent({
+                    type: "ended",
+                    target: this
+                });             
+            }
+        },
         _reset: function() {
             this._playTime = undefined;
             this._bufferSource = undefined;

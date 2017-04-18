@@ -108,19 +108,22 @@ Pauses playback of the audio.
 Stops playback of the audio, resetting `currentTime` to `0`.
 
 ## Event Handling
-The event handling code emulates DOM events but does not use actual DOM event objects. Currently only two events are supported: `canplay` and `canplaythrough`.
+The event handling code emulates DOM events but does not use actual DOM event objects. Currently only three events are supported: `canplay`,  `canplaythrough` and `ended`.
+
+* **canplay**, **canplaythrough**: Fired once audio data has been loaded and audio can start playing.
+* **ended**: Fired once audio has played through to the end. Will not fire when `loop` is set to  `true`.
 
 #### addEventListener(type, listener)
 Registers the specified listener for event type
-* **type**: `String` Name of event to listen for (`canplay`, `canplaythrough`).
+* **type**: `String` Name of event to listen for (`canplay`, `canplaythrough`, `ended`).
 * **listener**: `Function` Function to call when event is fired.
 #### removeEventListener(type, listener)
 Removes the event listener previously regisetered with `addEventListener`.
-* **type**: `String` Name of event that is being listened for (`canplay`, `canplaythrough`).
+* **type**: `String` Name of event that is being listened for (`canplay`, `canplaythrough`, `ended`).
 * **listener**: `Function` Function called when event is fired.
 #### dispatchEvent(type)
 Dispatches an event, invoking the affected listenes in the appropriate order.
-* **type**: `String` Name of event to fire (`canplay`, `canplaythrough`).
+* **type**: `String` Name of event to fire (`canplay`, `canplaythrough`, `ended`).
 
 
 ### Global Options
