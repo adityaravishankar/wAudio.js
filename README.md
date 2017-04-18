@@ -1,12 +1,12 @@
 # wAudio.js
-[wAudio.js](https://github.com/adityaravishankar/wAudio.js) is a drop-in replacement for the HTML5 Audio object that uses Web Audio behind the scenes.
+[wAudio.js](https://github.com/adityaravishankar/wAudio.js) is a drop-in replacement for the HTML5 Audio object, which uses Web Audio behind the scenes.
 
-It replicates the HTML5 Audio API, but transparently uses the [Web Audio API](http://webaudio.github.io/web-audio-api/) behind the scenes, allowing the use of Web Audio with the simpler Audio API. This makes it easy to migrate your HTML5 projects that use Audio to Web Audio, for use on mobile devices.
+It replicates the HTML5 Audio API, but transparently uses the [Web Audio API](http://webaudio.github.io/web-audio-api/) to implement the features, allowing the use of Web Audio with the simpler Audio API. This makes it easy to migrate your HTML5 projects that use Audio to Web Audio, for use on mobile devices.
 
 ### Features
 * Use Audio object API for Web Audio
 * Detect Web Audio support by checking for presence of wAudio object
-* Automatic caching for improved performance
+* Automatic caching of requests for improved performance
 * Easily unlock audio playback on Safari, using either `playMutedSound()` method or `mobileAutoEnable` property
 * No outside dependencies, just pure JavaScript
 * Extremely small - 4KB minified!!
@@ -17,7 +17,7 @@ Tested in the following browsers/versions:
 * Internet Explorer 9.0+
 * Firefox 4.0+
 * Safari 5.1.4+
-* Mobile Safari 6.0+ (after user input using playMutedSound())
+* Mobile Safari 6.0+ (after user input, using `playMutedSound()` or `mobileAutoEnable`)
 * Opera 12.0+
 * Microsoft Edge
 
@@ -36,8 +36,6 @@ Tested in the following browsers/versions:
 * [License](#license)
 
 ### Quick Start
-
-Several options to get up and running:
 
 * Clone the repo: `git clone https://github.com/adityaravishankar/wAudio.js.git`
 
@@ -74,7 +72,7 @@ sound.autoplay = true;
 ##### Listen for events:
 ```javascript
 var sound = new wAudio("sound.ogg");
-sound.addEventListener("canplaythrough", function(){
+sound.addEventListener("canplaythrough", function() {
     console.log("Sound loaded. Playing ...");
     sound.play();
 });
@@ -143,7 +141,7 @@ You can call the `playMutedSound()` method inside a touch event to unlock audio 
 wAudio.playMutedSound();
 ```
 
-Alternatively, you can set the `mobileAutoEnable` flag to true so wAudio tries to automatically unlock mobile audio by playing a muted sound on the first `touchend` event.
+Alternatively, you can set the `mobileAutoEnable` flag to `true` so wAudio tries to automatically unlock mobile audio by playing a muted sound on the first `touchend` event.
 
 ```javascript
 // Automatically activate sound on the first touch/tap event
